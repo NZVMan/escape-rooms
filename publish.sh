@@ -1,5 +1,5 @@
 #!/bin/zsh
-# Rebuilds the maths, biology and chemistry web apps and publishes them to GitHub Pages.
+# Rebuilds the maths, biology, chemistry and classics web apps and publishes them to GitHub Pages.
 #   ./publish.sh            build, copy, commit and push
 #   ./publish.sh --no-push  build and copy only (to check locally first)
 set -e
@@ -12,6 +12,7 @@ build(){  # build <project folder> <site folder>
 build "Maths Escape Room" maths
 build "Biology Escape Room" biology
 build "Chemistry Escape Room" chemistry
+build "Classics Escape Room" classics
 [[ "$1" == "--no-push" ]] && { echo "Built; not pushed."; exit 0 }
 git add -A
 if git diff --cached --quiet; then echo "Nothing has changed since the last publish."; exit 0; fi
